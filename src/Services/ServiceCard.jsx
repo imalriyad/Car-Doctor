@@ -1,6 +1,8 @@
+import { Link } from "react-router-dom";
+
 /* eslint-disable react/prop-types */
 const ServiceCard = ({service}) => {
-    const {title,img,price}= service
+    const {title,img,price,_id}= service
   return (
     <div>
       <div className="bg-base-100  border p-4 rounded-md">
@@ -12,7 +14,7 @@ const ServiceCard = ({service}) => {
         <h1 className="text-xl mb-2 font-bold">{title}</h1>
        <div className="flex items-center justify-between"> 
         <h1 className="text-lg text-[#FF3811] font-bold">Price : ${price}</h1>
-        <button className="md:px-6 text-xs md:text-sm md:py-3 px-2 py-2 text-white rounded bg-[#FF3811] font-semibold">See Details</button>
+        <Link to={`/ServiceDetails/${_id}`} className="md:px-4 text-xs md:text-sm md:py-2 px-2 py-2 text-white rounded bg-[#FF3811] font-semibold">See Details</Link>
        </div>
       </div>
     </div>

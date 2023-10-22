@@ -54,7 +54,7 @@ const Navbar = () => {
         <div className="navbar-end">
           <FiShoppingBag className="text-2xl mr-4 cursor-pointer"></FiShoppingBag>
           <PiMagnifyingGlassBold className="text-2xl mr-4 cursor-pointer"/>
-          <Link className="md:px-6 md:py-3 px-2 py-2 border hover:bg-[#FF3811] hover:text-white rounded border-[#FF3811] text-[#FF3811] font-bold hover:duration-300">
+          <Link className="md:px-6 md:py-2 px-2 py-2 border hover:bg-[#FF3811] hover:text-white rounded border-[#FF3811] text-[#FF3811] font-bold hover:duration-300">
             Appointment
           </Link>
         </div>

@@ -2,7 +2,7 @@
 
 const AboutUs = () => {
   return <div>
-     <div className="flex lg:flex-row flex-col px-4 items-start justify-between my-20 mb-36 gap-20 ">
+     <div className="flex lg:flex-row flex-col px-4 items-start justify-between my-20 md:mb-36 mb-20 gap-20 ">
       <div className="relative lg:max-w-xl md:mx-auto mx-0 w-9/12 lg:mx-0 md:h-[400px]">
         <img
           src="https://i.ibb.co/r2yYqK2/person.jpg"
@@ -16,7 +16,7 @@ const AboutUs = () => {
         />
       </div>
 
-      <div className="space-y-5 lg:max-w-3xl">
+      <div className="space-y-5 lg:max-w-3xl ">
         <p className="text-[#FF3811] font-bold text-xl">About Us</p>
         <h1 className="text-3xl font-bold">We are qualified & of experience in this field</h1>
         <p className="text-[#737373]">
