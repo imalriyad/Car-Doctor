@@ -1,14 +1,14 @@
 /* eslint-disable react/no-unescaped-entities */
 import { IoMdArrowForward } from "react-icons/io";
 import { MdOutlineShoppingCartCheckout } from "react-icons/md";
-import { useLoaderData, useParams } from "react-router-dom";
+import { NavLink, useLoaderData, useParams } from "react-router-dom";
 
 const ServiceDetails = () => {
   const loadedService = useLoaderData();
   const { id } = useParams();
 
   const targetData = loadedService?.find((item) => item._id === id);
-  const { title, img, description,price } = targetData;
+  const { title, img, description, price } = targetData;
   console.log(targetData);
   return (
     <div className="max-w-screen-2xl px-4">
@@ -26,7 +26,7 @@ const ServiceDetails = () => {
         </div>
       </div>
 
-      <div className="md:flex mt-10 gap-10 h-[450px]">
+      <div className="md:flex mt-10 gap-10 h-[500px]">
         <div className="md:w-3/4 space-y-8">
           <img
             src={img}
@@ -91,17 +91,30 @@ const ServiceDetails = () => {
               </div>
             </div>
           </div>
+
+          <div>
+            <iframe
+            className="w-full rounded-lg my-10"
+              width="560"
+              height="500"
+              src="https://www.youtube.com/embed/Y3jcQCdeJAs?si=sSbTpFGMbrGYsduc"
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+          </div>
         </div>
 
         <div className="md:w-2/6">
           <div className="p-5 bg-base-200 h-[450px]  space-y-3 rounded-md">
             <h1 className="font-bold text-2xl">Services</h1>
             {loadedService?.map((item) => (
-              <div key={item._id}>
-                <button className="btn bg-white w-full ">
+              <div key={item._id} className="sideMenu ">
+                <NavLink to={`/ServiceDetails/${item._id}`} className="btn bg-white w-full ">
                   {item.title}{" "}
                   <IoMdArrowForward className="text-xl"></IoMdArrowForward>
-                </button>
+                </NavLink>
               </div>
             ))}
           </div>
@@ -138,23 +151,37 @@ const ServiceDetails = () => {
               </button>
             </div>
           </div>
-          
+
           <div className="bg-[#151515] my-10 p-8 rounded-lg">
             <img
               src="https://i.ibb.co/FxdV691/logo.png"
               alt=""
               className="mx-auto"
             />
-            <p className="text-white text-center mt-4 w-52 mx-auto font-semibold">Need Help? We Are Here To Help You</p>
+            <p className="text-white text-center mt-4 w-52 mx-auto font-semibold">
+              Need Help? We Are Here To Help You
+            </p>
             <div className="bg-base-100 rounded-md h-[160px] md:p-10 p-6 text-center relative">
-              <h1 className="md:text-xl font-bold" ><span className="text-[#FF3811]">Car Doctor</span> Special</h1>
-              <p>Save up to <span className="text-[#FF3811] font-medium mt-2 ">60% off</span></p>
-              <button className="btn text-white normal-case bg-[#FF3811] hover:bg-[#FF3811] w-[80%] absolute -bottom-[15px] right-[10%] border-none">Get A Quote</button>
+              <h1 className="md:text-xl font-bold">
+                <span className="text-[#FF3811]">Car Doctor</span> Special
+              </h1>
+              <p>
+                Save up to{" "}
+                <span className="text-[#FF3811] font-medium mt-2 ">
+                  60% off
+                </span>
+              </p>
+              <button className="btn text-white normal-case bg-[#FF3811] hover:bg-[#FF3811] w-[80%] absolute -bottom-[15px] right-[10%] border-none">
+                Get A Quote
+              </button>
             </div>
           </div>
           <div>
             <h1 className="md:text-4xl font-bold text-3xl">Price ${price}</h1>
-            <button className="btn w-full mt-5 bg-[#FF3811] hover:bg-[#FF3811] text-white">Proceed Checkout <MdOutlineShoppingCartCheckout className="text-xl"/></button>
+            <button className="btn w-full mt-5 bg-[#FF3811] hover:bg-[#FF3811] text-white">
+              Proceed Checkout{" "}
+              <MdOutlineShoppingCartCheckout className="text-xl" />
+            </button>
           </div>
         </div>
       </div>

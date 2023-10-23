@@ -42,15 +42,16 @@ const Sider = () => {
   return (
     <div>
       <div
-        className="md:h-[700px] h-[370px] relative rounded-lg"
+        className="md:h-[700px] h-[370px] relative  rounded-lg"
         style={{
           backgroundImage: `url(${sliderImg[currentIndex]})`,
           objectFit: "contain",
           backgroundSize: "cover",
         }}
       >
-        <div className="hero-overlay opacity-40 bg-[#151515] rounded-lg"></div>
-        <div className="absolute md:top-[30%] top-14 px-4 max-w-xl md:ml-16 space-y-5 md:space-y-7 text-white">
+        
+        <div className="absolute md:w-2/4 py-[10%] p-4 md:pl-16 space-y-5 md:space-y-7 text-white bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0.00)] h-full rounded-lg">
+        {/* <div className="absolute md:top-[30%] top-14 px-4 max-w-xl md:ml-16 space-y-5 md:space-y-7 text-white"> */}
           <h1 className="md:text-6xl text-2xl font-bold">
             {carServiceTitles[currentIndex]}
           </h1>

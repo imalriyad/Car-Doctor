@@ -5,3 +5,9 @@
 div a.active{
     border-bottom: 2px solid #FF3811;
 }
+
+.sideMenu a.active{
+    background-color: #FF3811;
+    color: white;
+    border-bottom: 2px solid #FF3811;
+}
