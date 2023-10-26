@@ -1,11 +1,12 @@
 const Footer = () => {
   return (
-    <div className=" bg-base-200 mt-10 ">
+    <div className="bg-base-300">
       <footer className="footer p-10 max-w-screen-2xl mx-auto text-base-content">
         <aside className="space-y-3">
           <img src="https://i.ibb.co/FxdV691/logo.png" alt="" />
           <p>
-            Edwin Diaz is a software and web technologies <br /> engineer, a life coach trainer who is also a serial .
+            Car Doctor is a software and web technologies <br /> engineer, a
+            life coach trainer who is also a serial .
           </p>
         </aside>
         <nav>

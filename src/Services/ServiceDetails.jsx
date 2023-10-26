@@ -1,31 +1,20 @@
 /* eslint-disable react/no-unescaped-entities */
 import { IoMdArrowForward } from "react-icons/io";
 import { MdOutlineShoppingCartCheckout } from "react-icons/md";
-import { NavLink, useLoaderData, useParams } from "react-router-dom";
+import { Link, NavLink, useLoaderData, useParams } from "react-router-dom";
+import RouterBanner from "../Components/RouterBanner";
+import Facilitys from "./Facilitys";
 
 const ServiceDetails = () => {
   const loadedService = useLoaderData();
+  
   const { id } = useParams();
-
   const targetData = loadedService?.find((item) => item._id === id);
-  const { title, img, description, price } = targetData;
-  console.log(targetData);
+  const {_id,title, img, description, price } = targetData;
+
   return (
     <div className="max-w-screen-2xl px-4">
-      <div className="relative w-full md:h-auto h-[50vh]">
-        <img
-          src="https://i.ibb.co/M7LHn1J/checkout.png"
-          className="w-full h-full"
-          alt=""
-        />
-        <h1 className="absolute top-[40%] left-[20%] md:left-[25%] lg:left-[38%] text-2xl md:text-5xl font-bold text-white ">
-          Service Details
-        </h1>
-        <div className="absolute bottom-0 md:p-3 p-1 bg-[#FF3811] left-[25%] lg:left-[44%] md:left-[37%] text-sm  text-white">
-          Home/Service Details
-        </div>
-      </div>
-
+      <RouterBanner></RouterBanner>
       <div className="md:flex mt-10 gap-10 h-[500px]">
         <div className="md:w-3/4 space-y-8">
           <img
@@ -34,21 +23,17 @@ const ServiceDetails = () => {
             className="object-fill rounded-lg w-full h-full mb-10"
           />
 
-          <h1 className="md:text-4xl font-bold text-3xl">{title}</h1>
-          <p className="text-[#737373]">{description}</p>
+          <h1 className="md:text-4xl font-bold text-3xl ">{title}</h1>
+          <p className="text-[#737373] ">{description}</p>
 
+{/* Facilitys */}
           <div className="grid md:grid-cols-2 gap-10 ">
             {targetData.facility.map((facilitys) => (
-              <div
-                key={facilitys.name}
-                className="bg-base-200 p-8 rounded-md border-t-2 border-[#FF3811]"
-              >
-                <h1 className="font-bold text-xl mb-3">{facilitys.name}</h1>
-                <p className="font-light text-[#737373]">{facilitys.details}</p>
-              </div>
+              <Facilitys facilitys={facilitys} key={facilitys.name}></Facilitys>
             ))}
           </div>
 
+{/* processs */}
           <div className="space-y-10">
             <h1 className="md:text-4xl mt-20 font-bold text-3xl">
               3 Simple Steps to Process
@@ -92,26 +77,32 @@ const ServiceDetails = () => {
             </div>
           </div>
 
+{/* youtube video */}
           <div>
             <iframe
-            className="w-full rounded-lg my-10"
+              className="w-full rounded-lg my-10"
               width="560"
               height="500"
               src="https://www.youtube.com/embed/Y3jcQCdeJAs?si=sSbTpFGMbrGYsduc"
               title="YouTube video player"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
+              allowFullScreen
             ></iframe>
           </div>
+
         </div>
 
+{/* side menu */}
         <div className="md:w-2/6">
           <div className="p-5 bg-base-200 h-[450px]  space-y-3 rounded-md">
             <h1 className="font-bold text-2xl">Services</h1>
             {loadedService?.map((item) => (
               <div key={item._id} className="sideMenu ">
-                <NavLink to={`/ServiceDetails/${item._id}`} className="btn bg-white w-full ">
+                <NavLink
+                  to={`/ServiceDetails/${item._id}`}
+                  className="btn bg-white w-full "
+                >
                   {item.title}{" "}
                   <IoMdArrowForward className="text-xl"></IoMdArrowForward>
                 </NavLink>
@@ -178,13 +169,15 @@ const ServiceDetails = () => {
           </div>
           <div>
             <h1 className="md:text-4xl font-bold text-3xl">Price ${price}</h1>
-            <button className="btn w-full mt-5 bg-[#FF3811] hover:bg-[#FF3811] text-white">
+            <Link to={`/Cheakout/${_id}`} className="btn w-full mt-5 bg-[#FF3811] hover:bg-[#FF3811] text-white">
               Proceed Checkout{" "}
               <MdOutlineShoppingCartCheckout className="text-xl" />
-            </button>
+            </Link>
           </div>
         </div>
+
       </div>
+
     </div>
   );
 };

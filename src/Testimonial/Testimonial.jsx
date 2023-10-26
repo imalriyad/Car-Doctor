@@ -3,7 +3,7 @@ import Marquee from "react-fast-marquee";
 
 const Testimonial = () => {
   return (
-    <div>
+    <div id="testimonial" className="py-6">
       <div className="max-w-screen-sm mx-auto text-center px-4 my-14 space-y-3">
         <p className="text-[#FF3811] font-bold text-sm md:text-base group-hover:text-white mt-3">
           Testimonial
@@ -15,7 +15,9 @@ const Testimonial = () => {
         </p>
       </div>
 
-      <Marquee>
+      <Marquee
+      pauseOnHover={true} 
+      >
         <div className="flex justify-around gap-5">
           <div className="border p-10 rounded-xl w-[400px] drop-shadow-md ">
             <div className="flex items-center gap-4">
@@ -57,7 +59,7 @@ const Testimonial = () => {
                 type="radio"
                 name="rating-6"
                 className="mask mask-star-2 bg-orange-400"
-                checked
+                defaultChecked
               />
               <input
                 type="radio"
@@ -106,7 +108,7 @@ const Testimonial = () => {
                 type="radio"
                 name="rating-1"
                 className="mask mask-star-2 bg-orange-400"
-                checked
+                defaultChecked
               />
               <input
                 type="radio"
@@ -149,7 +151,7 @@ const Testimonial = () => {
               <input
                 type="radio"
                 name="rating-2"
-                checked
+                defaultChecked
                 className="mask mask-star-2 bg-orange-400"
               />
               <input
@@ -200,7 +202,7 @@ const Testimonial = () => {
                 type="radio"
                 name="rating-3"
                 className="mask mask-star-2 bg-orange-400"
-                checked
+                defaultChecked
               />
               <input
                 type="radio"
@@ -255,7 +257,7 @@ const Testimonial = () => {
                 type="radio"
                 name="rating-4"
                 className="mask mask-star-2 bg-orange-400"
-                checked
+                defaultChecked
               />
               <input
                 type="radio"

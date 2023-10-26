@@ -2,9 +2,16 @@ import { createBrowserRouter } from "react-router-dom";
 import Layout from "../Layout/Layout";
 import ErrorPage from "../Pages/ErrorPage";
 import Home from "../Pages/Home";
+import ServiceDetails from "../Services/ServiceDetails";
+import Signup from "../Form/Signup";
+import Signin from "../Form/Signin";
+import Cheakout from "../Components/Cheakout";
 import AboutUs from "../Components/AboutUs";
 import Services from "../Services/Services";
-import ServiceDetails from "../Services/ServiceDetails";
+import Testimonial from "../Testimonial/Testimonial";
+import Info from "../Components/Info";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import MyOrders from "../Pages/MyOrders";
 
 const router = createBrowserRouter([
   {
@@ -21,14 +28,40 @@ const router = createBrowserRouter([
         element: <AboutUs></AboutUs>,
       },
       {
-        path: "/Services",
+        path: "/Service",
         element: <Services></Services>,
       },
       {
-        path:'/ServiceDetails/:id',
-        element:<ServiceDetails></ServiceDetails>,
-        loader:()=> fetch('https://api.npoint.io/8d701c9baa305ec8910f')
-      }
+        path: "/Testimonial",
+        element: <Testimonial></Testimonial>,
+      },
+      {
+        path: "/MyOrders",
+        element: <PrivateRoute><MyOrders></MyOrders></PrivateRoute>,
+      },
+      {
+        path: "/Contact",
+        element: <Info></Info>,
+      },
+      
+      {
+        path: "/ServiceDetails/:id",
+        element: <PrivateRoute><ServiceDetails></ServiceDetails>,</PrivateRoute>,
+        loader: () => fetch("http://localhost:5000/services"),
+      },
+      {
+        path: "/Cheakout/:id",
+        element: <Cheakout></Cheakout>,
+        loader: ({params}) => fetch(`http://localhost:5000/services/${params.id}`),
+      },
+      {
+        path: "/Signup",
+        element: <Signup></Signup>,
+      },
+      {
+        path: "/SignIn",
+        element: <Signin></Signin>,
+      },
     ],
   },
 ]);

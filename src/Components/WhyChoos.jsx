@@ -2,7 +2,7 @@
 
 const WhyChoos = () => {
   return (
-    <div className="px-4">
+    <div id="features" className="px-4 py-6">
       <div className="max-w-screen-sm mx-auto text-center px-4 my-14 space-y-3">
         <p className="text-[#FF3811] font-bold text-sm md:text-base group-hover:text-white mt-3">
           Core Features

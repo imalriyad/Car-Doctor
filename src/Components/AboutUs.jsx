@@ -1,7 +1,8 @@
 /* eslint-disable react/no-unescaped-entities */
 
 const AboutUs = () => {
-  return <div>
+  return <div id="about" className="py-6">
+   
      <div className="flex lg:flex-row flex-col px-4 items-start justify-between my-20 md:mb-36 mb-20 gap-20 ">
       <div className="relative lg:max-w-xl md:mx-auto mx-0 w-9/12 lg:mx-0 md:h-[400px]">
         <img

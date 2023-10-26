@@ -2,8 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-div a.active{
+.menu a.active{
     border-bottom: 2px solid #FF3811;
+    padding: 2px;
 }
 
 .sideMenu a.active{

@@ -6,6 +6,7 @@ import TeamSlider from "../Team/TeamSlider";
 import WhyChoos from "../Components/WhyChoos";
 import Testimonial from "../Testimonial/Testimonial";
 
+
 const Home = () => {
   return (
     <div>
@@ -16,6 +17,7 @@ const Home = () => {
       <Testimonial></Testimonial>
       <WhyChoos></WhyChoos>
       <Info></Info>
+
     </div>
   );
 };
