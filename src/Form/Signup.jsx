@@ -35,7 +35,7 @@ const Signup = () => {
         form.reset();
         navigate(`${state ? state : "/"}`);
       })
-      .catch((error) => toast.error(error));
+      .catch((error) => toast.error(error.message));
   };
 
   return (

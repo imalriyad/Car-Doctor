@@ -4,22 +4,38 @@ import Googlelogin from "./Googlelogin";
 import { useContext } from "react";
 import { AuthContext } from "../Context/Context";
 import toast from "react-hot-toast";
+import axios from "axios";
 
 const Signin = () => {
   const { SigniniWithEmail } = useContext(AuthContext);
   const navigate = useNavigate();
   const { state } = useLocation();
+
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
     SigniniWithEmail(email, password)
-      .then(() => {
-        toast.success("Login Successfull!");
-        navigate(`${state ? state : "/"}`);
+      .then((result) => {
+        const loggedInUser = result.user;
+        console.log(loggedInUser);
+        const user = { email };
+
+        // get access token
+        axios
+          .post("https://car-doctor-server-seven-red.vercel.app/jwt", user, {
+            withCredentials: true,
+          })
+          .then((res) => {
+            console.log(res.data);
+            if (res.data.success) {
+              toast.success("Login Successfull!");
+              navigate(state ? state : "/");
+            }
+          });
       })
-      .catch((error) => toast.error(error));
+      .catch((error) => console.log(error));
   };
   return (
     <div className="flex gap-10 items-center md:flex-row flex-col-reverse justify-center mx-auto max-w-screen-xl">

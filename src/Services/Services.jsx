@@ -11,7 +11,9 @@ const Services = () => {
   const { data: services, isPending } = useQuery({
     queryKey: ["services"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/services");
+      const res = await fetch(
+        "https://car-doctor-server-seven-red.vercel.app/services"
+      );
       return res.json();
     },
   });

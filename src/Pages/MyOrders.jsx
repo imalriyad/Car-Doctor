@@ -5,15 +5,21 @@ import { AuthContext } from "../Context/Context";
 import { useState } from "react";
 import Table from "../Components/Table";
 import swal from "sweetalert";
+import axios from "axios";
 
 const MyOrders = () => {
   const { user } = useContext(AuthContext);
   const [myOrders, setOrders] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/orders?customerEmail/${user?.email}`)
-      .then((res) => res.json())
-      .then((data) => setOrders(data));
+    axios
+      .get(
+        `https://car-doctor-server-seven-red.vercel.app/orders?customerEmail=${user.email}`,
+        {
+          withCredentials: true,
+        }
+      )
+      .then((res) => setOrders(res.data));
   }, [user?.email]);
 
   const handleDelete = (_id) => {
@@ -25,7 +31,7 @@ const MyOrders = () => {
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        fetch(`http://localhost:5000/orders/${_id}`, {
+        fetch(`https://car-doctor-server-seven-red.vercel.app/orders/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -47,13 +53,13 @@ const MyOrders = () => {
   const handleStatus = (_id) => {
     swal({
       title: "Are you sure?",
-      text: "Once deleted, you will not be able to recover this imaginary file!",
+      text: "You cant undo after confirming",
       icon: "warning",
       buttons: true,
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        fetch(`http://localhost:5000/orders/${_id}`, {
+        fetch(`https://car-doctor-server-seven-red.vercel.app/orders/${_id}`, {
           method: "PATCH",
           headers: {
             "content-type": "application/json",

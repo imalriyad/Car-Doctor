@@ -25,9 +25,9 @@ const Navbar = () => {
       <NavLink to={'/Testimonial'} className="font-semibold ml-8 text-[#444] text-base">
         Testimonial
       </NavLink>
-      <NavLink to={"/MyOrders"} className="font-semibold ml-8 text-[#444] text-base">
+      {user && <NavLink to={"/MyOrders"} className="font-semibold ml-8 text-[#444] text-base">
       My Orders
-      </NavLink>
+      </NavLink>}
       <NavLink to={'/Contact'} className="font-semibold ml-8 text-[#444] text-base">
         Contact
       </NavLink>

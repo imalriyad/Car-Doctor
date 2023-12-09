@@ -37,22 +37,34 @@ const router = createBrowserRouter([
       },
       {
         path: "/MyOrders",
-        element: <PrivateRoute><MyOrders></MyOrders></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <MyOrders></MyOrders>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/Contact",
         element: <Info></Info>,
       },
-      
+
       {
         path: "/ServiceDetails/:id",
-        element: <PrivateRoute><ServiceDetails></ServiceDetails>,</PrivateRoute>,
-        loader: () => fetch("http://localhost:5000/services"),
+        element: (
+          <PrivateRoute>
+            <ServiceDetails></ServiceDetails>,
+          </PrivateRoute>
+        ),
+        loader: () =>
+          fetch("https://car-doctor-server-seven-red.vercel.app/services"),
       },
       {
         path: "/Cheakout/:id",
         element: <Cheakout></Cheakout>,
-        loader: ({params}) => fetch(`http://localhost:5000/services/${params.id}`),
+        loader: ({ params }) =>
+          fetch(
+            `https://car-doctor-server-seven-red.vercel.app/services/${params.id}`
+          ),
       },
       {
         path: "/Signup",

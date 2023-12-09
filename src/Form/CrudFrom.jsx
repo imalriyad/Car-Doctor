@@ -4,16 +4,15 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../Context/Context";
 import toast from "react-hot-toast";
 
-
 /* eslint-disable react/prop-types */
-const CrudFrom = ({targetData}) => {
-  const {user} = useContext(AuthContext)
-  const navigate = useNavigate()
-     const goBack =()=>{
-        navigate(-1)
-     }
+const CrudFrom = ({ targetData }) => {
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const goBack = () => {
+    navigate(-1);
+  };
 
-      const {title, description, price ,img} = targetData;
+  const { title, description, price, img } = targetData;
   const handleCheackOut = (e) => {
     e.preventDefault();
     const serviceName = e.target.serviceName.value;
@@ -29,40 +28,46 @@ const CrudFrom = ({targetData}) => {
       customerEmail,
       phoneNumber,
       location,
-      img
+      img,
     };
 
-const date = new Date()
-const year = date.getFullYear();
-const month = (date.getMonth() + 1).toString().padStart(2, '0'); 
-const day = date.getDate().toString().padStart(2, '0');
-const hour = date.getHours();
-const minute = date.getMinutes().toString().padStart(2, '0');
-const isAM = hour < 12;
-let hour12 = hour % 12;
-if (hour12 === 0) {
-  hour12 = 12; 
-}
-const ampm = isAM ? 'AM' : 'PM';
-const time = `${hour12}:${minute}${ampm} ${day}-${month}-${year}`
-   
-    fetch("http://localhost:5000/orders", {
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = (date.getMonth() + 1).toString().padStart(2, "0");
+    const day = date.getDate().toString().padStart(2, "0");
+    const hour = date.getHours();
+    const minute = date.getMinutes().toString().padStart(2, "0");
+    const isAM = hour < 12;
+    let hour12 = hour % 12;
+    if (hour12 === 0) {
+      hour12 = 12;
+    }
+    const ampm = isAM ? "AM" : "PM";
+    const time = `${hour12}:${minute}${ampm} ${day}-${month}-${year}`;
+
+    fetch("https://car-doctor-server-seven-red.vercel.app/orders", {
       method: "POST",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify({...order,ordeRtime: time}),
+      body: JSON.stringify({ ...order, ordeRtime: time }),
     })
-    .then(res => res.json())
-    .then(data => {
-      if(data.insertedId){
-        toast.success('Order hase placed Successfully')
-      }
-    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          toast.success("Order hase placed Successfully");
+        }
+      });
   };
   return (
     <div className="w-full mx-auto bg-base-200 my-10 md:p-10 p-5 rounded-e-lg">
-       <button onClick={goBack} className="btn bg-[#FF3811] hover:bg-[#FF3811] text-white"><AiOutlineArrowLeft className="text-2xl"/>Back</button>
+      <button
+        onClick={goBack}
+        className="btn bg-[#FF3811] hover:bg-[#FF3811] text-white"
+      >
+        <AiOutlineArrowLeft className="text-2xl" />
+        Back
+      </button>
       <form
         onSubmit={handleCheackOut}
         className="md:grid grid-cols-2 md:space-y-0 space-y-4  mx-auto max-w-2xl gap-6"
