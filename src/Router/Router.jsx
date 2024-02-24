@@ -55,16 +55,13 @@ const router = createBrowserRouter([
             <ServiceDetails></ServiceDetails>,
           </PrivateRoute>
         ),
-        loader: () =>
-          fetch("https://car-doctor-server-seven-red.vercel.app/services"),
+        loader: () => fetch("https://cardoctor-server-pi.vercel.app/services"),
       },
       {
         path: "/Cheakout/:id",
         element: <Cheakout></Cheakout>,
         loader: ({ params }) =>
-          fetch(
-            `https://car-doctor-server-seven-red.vercel.app/services/${params.id}`
-          ),
+          fetch(`https://cardoctor-server-pi.vercel.app/services/${params.id}`),
       },
       {
         path: "/Signup",

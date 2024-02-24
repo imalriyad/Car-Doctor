@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { AuthContext } from "../Context/Context";
 import { updateProfile } from "firebase/auth";
 import toast from "react-hot-toast";
+import axios from "axios";
 
 const Signup = () => {
   const { createUser } = useContext(AuthContext);
@@ -30,10 +31,19 @@ const Signup = () => {
           .catch((error) => {
             console.log(error);
           });
-
-        toast.success("registration succefull");
-        form.reset();
-        navigate(`${state ? state : "/"}`);
+        const user = { email };
+        axios
+          .post("https://cardoctor-server-pi.vercel.app/jwt", user, {
+            withCredentials: true,
+          })
+          .then((res) => {
+            console.log(res.data);
+            if (res.data.success) {
+              form.reset();
+              toast.success("registration succefull");
+              navigate(state ? state : "/");
+            }
+          });
       })
       .catch((error) => toast.error(error.message));
   };

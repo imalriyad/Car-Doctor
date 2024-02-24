@@ -14,7 +14,7 @@ const MyOrders = () => {
   useEffect(() => {
     axios
       .get(
-        `https://car-doctor-server-seven-red.vercel.app/orders?customerEmail=${user.email}`,
+        `https://cardoctor-server-pi.vercel.app/orders?customerEmail=${user.email}`,
         {
           withCredentials: true,
         }
@@ -31,7 +31,7 @@ const MyOrders = () => {
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        fetch(`https://car-doctor-server-seven-red.vercel.app/orders/${_id}`, {
+        fetch(`https://cardoctor-server-pi.vercel.app/orders/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -59,7 +59,7 @@ const MyOrders = () => {
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        fetch(`https://car-doctor-server-seven-red.vercel.app/orders/${_id}`, {
+        fetch(`https://cardoctor-server-pi.vercel.app/orders/${_id}`, {
           method: "PATCH",
           headers: {
             "content-type": "application/json",

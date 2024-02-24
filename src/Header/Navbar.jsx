@@ -8,27 +8,44 @@ const Navbar = () => {
 
   const handleLogut = () => {
     logout()
-      .then(() => toast.success('LogOut Successfull!'))
+      .then(() => toast.success("LogOut Successfull!"))
       .catch((err) => console.log(err));
   };
   const menu = (
     <>
-      <NavLink to={'/'} className="font-semibold ml-8 text-[#444] text-base">
-       Home
+      <NavLink to={"/"} className="font-semibold ml-8 text-[#444] text-base">
+        Home
       </NavLink>
-      <NavLink to={'/About'} className="font-semibold ml-8 text-[#444] text-base">
+      <NavLink
+        to={"/About"}
+        className="font-semibold ml-8 text-[#444] text-base"
+      >
         About
       </NavLink>
-      <NavLink to={'/Service'} className="font-semibold ml-8 text-[#444] text-base">
-       Services
+      <NavLink
+        to={"/Service"}
+        className="font-semibold ml-8 text-[#444] text-base"
+      >
+        Services
       </NavLink>
-      <NavLink to={'/Testimonial'} className="font-semibold ml-8 text-[#444] text-base">
+      <NavLink
+        to={"/Testimonial"}
+        className="font-semibold ml-8 text-[#444] text-base"
+      >
         Testimonial
       </NavLink>
-      {user && <NavLink to={"/MyOrders"} className="font-semibold ml-8 text-[#444] text-base">
-      My Orders
-      </NavLink>}
-      <NavLink to={'/Contact'} className="font-semibold ml-8 text-[#444] text-base">
+      {user && (
+        <NavLink
+          to={"/MyOrders"}
+          className="font-semibold ml-8 text-[#444] text-base"
+        >
+          My Orders
+        </NavLink>
+      )}
+      <NavLink
+        to={"/Contact"}
+        className="font-semibold ml-8 text-[#444] text-base"
+      >
         Contact
       </NavLink>
     </>
@@ -86,7 +103,7 @@ const Navbar = () => {
               onClick={handleLogut}
               className="md:px-6 md:py-2 mr-4 px-2 py-2 border hover:bg-[#FF3811] hover:text-white rounded border-[#FF3811] text-[#FF3811] font-bold hover:duration-300"
             >
-              Log Out
+              Logout
             </button>
           )}
           <Link className="md:px-6 md:block hidden md:py-2 px-2 py-2 border hover:bg-[#FF3811] hover:text-white rounded border-[#FF3811] text-[#FF3811] font-bold hover:duration-300">

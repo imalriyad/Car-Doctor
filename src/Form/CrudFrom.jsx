@@ -45,7 +45,7 @@ const CrudFrom = ({ targetData }) => {
     const ampm = isAM ? "AM" : "PM";
     const time = `${hour12}:${minute}${ampm} ${day}-${month}-${year}`;
 
-    fetch("https://car-doctor-server-seven-red.vercel.app/orders", {
+    fetch("https://cardoctor-server-pi.vercel.app/orders", {
       method: "POST",
       headers: {
         "content-type": "application/json",

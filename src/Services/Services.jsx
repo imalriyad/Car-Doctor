@@ -12,7 +12,7 @@ const Services = () => {
     queryKey: ["services"],
     queryFn: async () => {
       const res = await fetch(
-        "https://car-doctor-server-seven-red.vercel.app/services"
+        "https://cardoctor-server-pi.vercel.app/services"
       );
       return res.json();
     },

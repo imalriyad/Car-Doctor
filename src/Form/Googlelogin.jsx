@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "../Context/Context";
 import toast from "react-hot-toast";
 import { useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Googlelogin = () => {
   const { googleLogin } = useContext(AuthContext);
@@ -9,9 +10,19 @@ const Googlelogin = () => {
   const { state } = useLocation();
   const handleGoogle = () => {
     googleLogin()
-      .then(() => {
-        toast.success("Login Successfull!");
-        navigate(`${state ? state : "/"}`);
+      .then((res) => {
+        const user = { email: res.user.email };
+        axios
+          .post("https://cardoctor-server-pi.vercel.app/jwt", user, {
+            withCredentials: true,
+          })
+          .then((res) => {
+            console.log(res.data);
+            if (res.data.success) {
+              toast.success("registration succefull");
+              navigate(state ? state : "/");
+            }
+          });
       })
       .catch((error) => console.log(error));
   };

@@ -21,10 +21,8 @@ const Signin = () => {
         const loggedInUser = result.user;
         console.log(loggedInUser);
         const user = { email };
-
-        // get access token
         axios
-          .post("https://car-doctor-server-seven-red.vercel.app/jwt", user, {
+          .post("https://cardoctor-server-pi.vercel.app/jwt", user, {
             withCredentials: true,
           })
           .then((res) => {
@@ -35,7 +33,7 @@ const Signin = () => {
             }
           });
       })
-      .catch((error) => console.log(error));
+      .catch((error) => toast.error(error.message));
   };
   return (
     <div className="flex gap-10 items-center md:flex-row flex-col-reverse justify-center mx-auto max-w-screen-xl">
